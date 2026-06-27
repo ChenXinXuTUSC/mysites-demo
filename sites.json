@@ -3,12 +3,17 @@
     {
       "id": "demo-three-basic",
       "name": "Three.js 基础场景",
-      "path": "demo-three-basic"
+      "path": "demos/demo-three-basic"
     },
     {
       "id": "demo-webgl-fluid",
       "name": "WebGL 流体模拟",
-      "path": "demo-webgl-fluid"
+      "path": "demos/demo-webgl-fluid"
+    },
+    {
+      "id": "landscape-gen",
+      "name": "P5JS 地形生成",
+      "path": "demos/landscape-gen"
     }
   ]
 }
