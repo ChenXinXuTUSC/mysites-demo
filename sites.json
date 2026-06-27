@@ -1,0 +1,14 @@
+{
+  "sites": [
+    {
+      "id": "demo-three-basic",
+      "name": "Three.js 基础场景",
+      "path": "demo-three-basic"
+    },
+    {
+      "id": "demo-webgl-fluid",
+      "name": "WebGL 流体模拟",
+      "path": "demo-webgl-fluid"
+    }
+  ]
+}

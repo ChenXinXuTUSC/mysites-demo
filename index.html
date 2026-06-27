@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mysites-demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="logo">mysites-demo</div>
+      <nav>
+        <button class="mode-toggle" :class="{ active: previewMode }" @click="togglePreviewMode">
+          {{ previewMode ? '站内预览' : '新标签打开' }}
+        </button>
+        <button class="theme-toggle" @click="toggleTheme">
+          <span v-if="theme === 'dark'">☀</span>
+          <span v-else>☾</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <div v-if="sites.length > 0" class="grid">
+        <div
+          v-for="site in sites"
+          :key="site.id"
+          class="card"
+          @mouseenter="handleCardHover(site, $event)"
+          @mouseleave="handleCardLeave"
+          @click="handleCardClick(site)"
+        >
+          <div class="card-content">
+            <h3>{{ site.name }}</h3>
+            <span class="card-path">{{ site.path }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="empty">
+        <p>暂无注册的 demo 站点</p>
+        <p class="hint">编辑 sites.json 添加你的第一个 demo</p>
+      </div>
+    </main>
+
+    <div v-if="tooltipVisible" class="tooltip" :style="tooltipStyle">
+      <div v-if="tooltipLoading" class="tooltip-loading">
+        <span class="spinner"></span> 加载中...
+      </div>
+      <div v-else class="tooltip-content-text">{{ tooltipContent }}</div>
+    </div>
+
+    <div v-if="previewSite" class="preview-overlay" @click.self="closePreview">
+      <button class="preview-close" @click="closePreview">&times;</button>
+      <iframe :src="previewSite.path + '/index.html'"></iframe>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/vanilla-tilt@1.8.1/lib/vanilla-tilt.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
