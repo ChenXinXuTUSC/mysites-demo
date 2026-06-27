@@ -47,7 +47,9 @@
       </div>
     </main>
 
-    <div v-if="tooltipVisible" class="tooltip" :style="tooltipStyle">
+    <div v-if="tooltipVisible" class="tooltip" :style="tooltipStyle"
+         @mouseenter="handleTooltipEnter"
+         @mouseleave="handleTooltipLeave">
       <div v-if="tooltipLoading" class="tooltip-loading">
         <span class="spinner"></span> 加载中...
       </div>

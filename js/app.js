@@ -11,7 +11,8 @@ createApp({
       tooltipLoading: false,
       tooltipStyle: {},
       readmeCache: {},
-      previewSite: null
+      previewSite: null,
+      tooltipHideTimer: null
     };
   },
 
@@ -76,6 +77,7 @@ createApp({
     },
 
     handleCardHover(site, event) {
+      clearTimeout(this.tooltipHideTimer);
       const card = event.currentTarget;
       const rect = card.getBoundingClientRect();
 
@@ -136,6 +138,17 @@ createApp({
     },
 
     handleCardLeave() {
+      this.tooltipHideTimer = setTimeout(() => {
+        this.tooltipVisible = false;
+      }, 250);
+    },
+
+    handleTooltipEnter() {
+      clearTimeout(this.tooltipHideTimer);
+    },
+
+    handleTooltipLeave() {
+      clearTimeout(this.tooltipHideTimer);
       this.tooltipVisible = false;
     },
 

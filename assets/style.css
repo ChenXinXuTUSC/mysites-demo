@@ -205,7 +205,6 @@ main {
   line-height: 1.7;
   color: var(--text-secondary);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  pointer-events: none;
   animation: tooltip-in 0.15s ease;
 }
 
